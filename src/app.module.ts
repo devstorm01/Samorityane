@@ -1,15 +1,16 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { FileService } from './utils/saveEntityToFile';
 import { Pool } from 'pg';
 
 const dbPool = new Pool({
   user: 'postgres',
   host: 'localhost',
-  database: 'simple_todo', // Или 'new_todo_app', если используешь старую базу
-  password: '123', // Твой пароль
+  database: 'simple_todo', // Или твоя база
+  password: '123',
   port: 5432,
-  client_encoding: 'UTF8', // Явно задаём кодировку
+  client_encoding: 'UTF8',
 });
 
 @Module({
@@ -17,6 +18,7 @@ const dbPool = new Pool({
   controllers: [AppController],
   providers: [
     AppService,
+    FileService,
     {
       provide: 'DATABASE_POOL',
       useValue: dbPool,
