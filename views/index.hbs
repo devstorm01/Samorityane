@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home Page</title>
+</head>
+<body>
+  <h1>Список задач</h1>
+  <ul>
+    {{#each tasks}}
+      <li>{{title}} - {{#if completed}}Выполнено{{else}}Не выполнено{{/if}}</li>
+    {{/each}}
+  </ul>
+</body>
+</html>
